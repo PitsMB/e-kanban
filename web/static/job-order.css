@@ -1,0 +1,176 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    height: 12vh;
+    box-shadow: 0px 0px 10px 0px gray;
+}
+
+.header .logo {
+    width: 13%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 2%;
+    cursor: pointer;
+    background: url(noy.jpeg);
+    background-repeat: no-repeat;
+    background-size: 200px 88px;
+}
+
+.jobOrder {
+    position: absolute;
+    width: 100vw;
+    height: 88vh;
+    top: 12%;
+    left: 0;
+    display: flex;
+}
+
+.jobOrder .addNewCoil {
+    margin: auto;
+    width: 45%;
+    height: 90%;
+    box-shadow: 1px 1px 5px 0px gray;
+}
+
+.jobOrder .addNewCoil p {
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 5px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    padding-left: 55px;
+}
+
+.jobOrder .addNewCoil input[type=text] {
+    width: 80%;
+    padding: 12px 20px;
+    margin-top: 25px;
+    margin-left: 55px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.jobOrder .addNewCoil input[type=submit] {
+    width: 20%;
+    background-color: black;
+    color: white;
+    border: none;
+    margin-top: 25px;
+    margin-left: 55px;
+    padding: 12px 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.7s;
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.jobOrder .addNewCoil input[type=submit]:hover {
+    width: 20%;
+    background-color: white;
+    color: black;
+    border: none;
+    margin-top: 25px;
+    margin-left: 55px;
+    padding: 12px 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.jobOrder .coilDetails {
+    margin: auto;
+    width: 45%;
+    height: 90%;
+    box-shadow: 1px 1px 5px 0px gray;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.jobOrder .coilDetails input[type=button] {
+    width: 70%;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: 0.7s;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    text-align: left;
+}
+
+.jobOrder .coilDetails input[type=button]:hover {
+    text-align: left;
+    width: 70%;
+    background-color: #585858;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: 1.3s;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+}
+
+.jobOrder .coilDetails i {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    font-style: normal;
+}
+
+.jobOrder .coilDetails .search {
+    height: 12%;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.jobOrder .coilDetails .search input[type="text"] {
+    width: 70%;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 18px;
+    align-items: center;
+    border-radius: 10px;
+    padding-left: 20px;
+    border: 1px solid black;
+    box-shadow: 0px 1px 1px 0px gainsboro;
+    background-color: whitesmoke;
+
+}
+
+.jobOrder .coilDetails .search button {
+    height: 40%;
+    width: 30px;
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.jobOrder .coilDetails .search button:hover {
+    height: 40%;
+    width: 50px;
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    opacity: 1;
+}

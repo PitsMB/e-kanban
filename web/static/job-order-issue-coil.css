@@ -1,0 +1,168 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    height: 12vh;
+    box-shadow: 0px 0px 10px 0px gray;
+}
+
+.header .logo {
+    width: 13%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 2%;
+    cursor: pointer;
+    background: url(noy.jpeg);
+    background-repeat: no-repeat;
+    background-size: 200px 88px;
+}
+
+.jo-issue {
+    position: absolute;
+    width: 60vw;
+    height: 80vh;
+    top: 12%;
+    left: 0;
+    margin-left: 20%;
+    margin-top: 25px;
+    box-shadow: 1px 1px 5px 0px gray;
+}
+
+.jo-issue .coil-details {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.jo-issue .coil-details .coil-tag {
+    width: 50%;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    position: relative;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;  
+    height: 100%; 
+    font-family: 'Courier New', monospace;
+    box-sizing: border-box;
+}
+
+.jo-issue .coil-details .coil-tag .cname {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-size: 25px;
+}
+
+.jo-issue .coil-details .coil-tag .ctag {
+    font-size: 90px;
+    font-weight: bold;
+}
+
+.jo-issue .coil-details .details {
+    width: 50%;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column; 
+    padding: 10px;
+}
+
+.jo-issue .coil-details .details i {
+    margin-bottom: 10px;
+    font-size: 25px;    
+    font-family: 'Courier New', monospace;
+    font-style: normal
+}
+
+.jo-issue .choice {
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jo-issue .choice .del {
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    transition: 0.7s;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 200px;
+    width: 200px;
+    height: 70px;
+}
+
+.jo-issue .choice .del:hover {
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 200px;
+    width: 200px;
+    height: 70px;
+}
+
+.jo-issue .choice .issue {
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: 0.7s;
+    margin-left: 5px;
+    margin-top: 200px;
+    width: 200px;
+    height: 70px;
+}
+
+.jo-issue .choice .issue:hover {
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 200px;
+    width: 200px;
+    height: 70px;
+}
+
+.jo-issue .choice .back {
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: 0.7s;
+    margin-left: 5px;
+    margin-top: 200px;
+    width: 200px;
+    height: 70px;
+}
+
+.jo-issue .choice .back:hover {
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 200px;
+    width: 200px;
+    height: 70px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='job-order-issue-coil.css') }}">
+    <title>Issue Coil</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"></div>
+    </div>
+
+    <div class="jo-issue">
+        <!-- Coil Details Section -->
+        <div class="coil-details">
+            <div class="coil-tag">
+                <i class="cname">COIL TAG:</i><i class="ctag">{{ coil_tag[1] }}</i>
+            </div>
+            <div class="details">
+                <i>SUPPLIER: <b>{{ coil_tag[2] }}</b></i><br>
+                <i>COLOR: <b>{{ coil_tag[3] }}</b></i><br>
+                <i>GAUGE: <b>{{ coil_tag[4] }}</b></i><br>
+                <i>WEIGHT: <b>{{ coil_tag[5] }}</b></i><br>
+                <i>LOCATION: <b>{{ coil_tag[6] }}</b></i><br>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="choice">
+            <form method="POST" action="{{ url_for('views.delete_coil', coil_tag=coil_tag[1]) }}">
+                <input type="submit" class="del" value="DELETE" 
+                       onclick="return confirm('Are you sure you want to delete this coil?')">
+            </form>
+            <a href="{{ url_for('views.job_order') }}">
+                <input class="back" type="button" name="choose" value="CANCEL">
+            </a>
+            <form method="POST" action="{{ url_for('views.issue_coil', coil_tag=coil_tag[1]) }}">
+                <input onclick="return confirm('Are you sure you want to issue this coil?')" class="issue" type="submit" value="ISSUE">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
