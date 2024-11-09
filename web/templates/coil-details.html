@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='job-order-issue-coil.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='coil-details.css') }}">
     <title>Issue Coil</title>
 </head>
 <body>
@@ -24,19 +24,12 @@
                 <i>LOCATION: <b>{{ coil_tag[6] }}</b></i><br>
             </div>
         </div>
-
-        <div class="choice">
-            <form method="POST" action="{{ url_for('views.delete_coil', coil_tag=coil_tag[1]) }}">
-                <input type="submit" class="del" value="DELETE" 
-                       onclick="return confirm('Are you sure you want to delete this coil?')">
-            </form>
-            <a href="{{ url_for('views.job_order') }}">
-                <input class="back" type="button" name="choose" value="CANCEL">
-            </a>
-            <form method="POST" action="{{ url_for('views.issue_coil', coil_tag=coil_tag[1]) }}">
-                <input onclick="return confirm('Are you sure you want to issue this coil?')" class="issue" type="submit" value="ISSUE">
-            </form>
-        </div>
+    <div class="choice">
+        <a href="{{ url_for('views.operator') }}">
+            <input class="back" type="button" name="choose" value="BACK">
+        </a>
+    </div>
+    </div>
     </div>
 </body>
 </html>

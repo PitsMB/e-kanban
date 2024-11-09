@@ -89,68 +89,14 @@
     align-items: center;
 }
 
-.jo-issue .choice .del {
-    font-size: 16px;
-    background-color: red;
-    color: white;
-    font-family: 'Courier New', monospace;
-    transition: 0.7s;
-    cursor: pointer;
-    margin-left: 5px;
-    margin-top: 200px;
-    width: 200px;
-    height: 70px;
-    border: none;
-}
-
-.jo-issue .choice .del:hover {
-    font-size: 16px;
-    background-color:red;
-    color: black;
-    border: none;
-    font-family: 'Courier New', monospace;
-    cursor: pointer;
-    margin-left: 5px;
-    margin-top: 200px;
-    width: 200px;
-    height: 70px;
-}
-
-.jo-issue .choice .issue {
-    font-size: 16px;
-    background-color: green;
-    color: white;
-    font-family: 'Courier New', monospace;
-    cursor: pointer;
-    transition: 0.7s;
-    margin-left: 5px;
-    margin-top: 200px;
-    width: 200px;
-    height: 70px;
-    border: none;
-}
-
-.jo-issue .choice .issue:hover {
-    font-size: 16px;
-    background-color: green;
-    color: black;
-    border: none;
-    font-family: 'Courier New', monospace;
-    cursor: pointer;
-    margin-left: 5px;
-    margin-top: 200px;
-    width: 200px;
-    height: 70px;
-}
-
 .jo-issue .choice .back {
     font-size: 16px;
-    background-color: white;
-    color: gray;
+    background-color: black;
+    color: white;
     font-family: 'Courier New', monospace;
     cursor: pointer;
     transition: 0.7s;
-    margin-left: 5px;
+    margin-left: 340px;
     margin-top: 200px;
     width: 200px;
     height: 70px;
@@ -165,7 +111,17 @@
     font-family: 'Courier New', monospace;
     cursor: pointer;
     margin-left: 5px;
+    margin-left: 340px;
     margin-top: 200px;
     width: 200px;
     height: 70px;
+}
+
+.jo-issue input[type=text] {
+    width: 80%;
+    padding: 12px 20px;
+    margin-top: 25px;
+    margin-left: 55px;
+    box-sizing: border-box;
+    font-size: 16px;
 }

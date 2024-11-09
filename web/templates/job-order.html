@@ -39,15 +39,21 @@
                 <input type="button" style="background-color: white; color: black; font-weight: bold; cursor: default;" value="Coil Tags" class="header-button">
                 <i class="header-status"><b>Status</b></i>
                 {% for tag in tags %}
+                {% if tag[7] == "In progress" or tag[7] == "To do" or tag[7] == "Done" %}
+                    <input title="Tag Already Issued and is now {{tag[7]}}" type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}"  readonly>
+                {% else %}
                 <a href="{{ url_for('views.job_order_coil_issue', showCoilDetails=tag[1]) }}">
-                    <input type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}">
+                    <input title="Issue Tag?" type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}">
                 </a>
+                {% endif %}
                     {% if tag[7] == "To do"%}   
                         <i style="color: red;">{{ tag[7] }}</i>
                     {% elif tag[7] == "In progress"%}   
                         <i style="color: blue;">{{ tag[7] }}</i>
                     {% elif tag[7] == "Done"%}   
                         <i style="color: green;">{{ tag[7] }}</i>
+                    {% elif tag[7] == "Used"%}
+                        <i style="color: navy;">{{ tag[7] }}</i>
                     {%else%}
                         <i>{{ tag[7] }}</i>
                     {%endif%}

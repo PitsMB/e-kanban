@@ -68,6 +68,17 @@ def get_coil_detail_per_tag(coil_tag):
 
     return coil_details
 
+def get_coil_detail_per_tag_operator(coil_tag):
+    db = connect_db()
+    cursor = db.cursor()
+    query = "SELECT * FROM coil WHERE tag = %s;"
+    cursor.execute(query, (coil_tag,))
+    coil_details = cursor.fetchone()
+    cursor.close()
+    db.close()
+
+    return coil_details
+
 def delete(coil_tag):
     try:
         db = connect_db()
@@ -105,5 +116,138 @@ def issue(coil_tag):
         cursor.close()
         db.close()
         return f"An error occurred while updating the coil status: {err}"
+
+    return "success"
+
+def operator_todo_coil_tags():
+    db = connect_db()
+    cursor = db.cursor()
+    cursor.execute(f"SELECT * FROM coil WHERE status= 'To do'")
+    tags = cursor.fetchall()
+    cursor.close()
+    db.close()
+
+    return tags
+
+def operator_inprog_coil_tags():
+    db = connect_db()
+    cursor = db.cursor()
+    cursor.execute(f"SELECT * FROM coil WHERE status= 'In progress'")
+    tags = cursor.fetchall()
+    cursor.close()
+    db.close()
+
+    return tags
+
+def operator_done_coil_tags():
+    db = connect_db()
+    cursor = db.cursor()
+    cursor.execute(f"SELECT * FROM coil WHERE status= 'Done'")
+    tags = cursor.fetchall()
+    cursor.close()
+    db.close()
+
+    return tags
+
+def done(coil_tag):
+    try:
+        db = connect_db()
+        cursor = db.cursor()
+
+        cursor.execute("UPDATE coil SET status = 'Used' WHERE tag = %s", (coil_tag,))
+        
+        db.commit()
+        cursor.close()
+        db.close()
+        
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        db.rollback()
+        cursor.close()
+        db.close()
+        return f"An error occurred while updating the coil status: {err}"
+
+    return "success"
+
+def cancel_inprog(coil_tag):
+    try:
+        db = connect_db()
+        cursor = db.cursor()
+
+        cursor.execute("UPDATE coil SET status = 'To do' WHERE tag = %s", (coil_tag,))
+        
+        db.commit()
+        cursor.close()
+        db.close()
+        
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        db.rollback()
+        cursor.close()
+        db.close()
+        return f"An error occurred while updating the coil status: {err}"
+
+    return "success"
+
+def cancel(coil_tag):
+    try:
+        db = connect_db()
+        cursor = db.cursor()
+
+        cursor.execute("UPDATE coil SET status = 'In progress' WHERE tag = %s", (coil_tag,))
+        
+        db.commit()
+        cursor.close()
+        db.close()
+        
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        db.rollback()
+        cursor.close()
+        db.close()
+        return f"An error occurred while updating the coil status: {err}"
+
+    return "success"
+
+def start(coil_tag):
+    try:
+        db = connect_db()
+        cursor = db.cursor()
+
+        cursor.execute("UPDATE coil SET status = 'In progress' WHERE tag = %s", (coil_tag,))
+        
+        db.commit()
+        cursor.close()
+        db.close()
+        
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        db.rollback()
+        cursor.close()
+        db.close()
+        return f"An error occurred while updating the coil status: {err}"
+
+    return "success"
+
+def edit(to_edit, coil_tag):
+    try:
+        db = connect_db()
+        cursor = db.cursor()
+        query = """
+            UPDATE coil 
+            SET gauge = %s, weight = %s, status = 'Done' 
+            WHERE tag = %s
+        """
+        cursor.execute(query, (*to_edit, coil_tag))  # Executes the query with the values
+        db.commit()
+        
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        db.rollback()
+        return f"An error occurred while updating the coil status: {err}"
+    
+    finally:
+        cursor.close()
+        db.close()
 
     return "success"
