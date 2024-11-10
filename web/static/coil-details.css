@@ -1,3 +1,4 @@
+/* General Styles for All Screens */
 .header {
     position: absolute;
     top: 0;
@@ -63,6 +64,8 @@
 .jo-issue .coil-details .coil-tag .ctag {
     font-size: 90px;
     font-weight: bold;
+    position: relative;
+    padding-top: 20px; /* Adjusting padding to move the tag lower */
 }
 
 .jo-issue .coil-details .details {
@@ -124,4 +127,66 @@
     margin-left: 55px;
     box-sizing: border-box;
     font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 10vh;
+    }
+    .header .logo {
+        width: 90%;
+        height: 100%;
+    }
+
+    .jo-issue {
+        width: 90vw;
+        margin-left: 5%;
+        height: auto;
+    }
+
+    .jo-issue .coil-details {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .jo-issue .coil-details .coil-tag,
+    .jo-issue .coil-details .details {
+        width: 100%;
+        border: none; 
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .jo-issue .coil-details .coil-tag .ctag {
+        font-size: 60px; 
+        padding-top: 30px;
+    }
+
+    .jo-issue .coil-details .details i {
+        font-size: 18px;
+    }
+
+    .jo-issue .choice .back {
+        font-size: 14px;
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        height: 50px;
+        padding: 10px;
+    }
+
+    .jo-issue .choice {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .jo-issue .choice .back:hover {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .jo-issue input[type=text] {
+        width: 90%;
+        margin-left: 5%;
+    }
 }

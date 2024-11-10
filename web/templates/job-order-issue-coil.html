@@ -26,6 +26,7 @@
         </div>
 
         <div class="choice">
+            {% if coil_tag[7] == "EOC" %}
             <form method="POST" action="{{ url_for('views.delete_coil', coil_tag=coil_tag[1]) }}">
                 <input type="submit" class="del" value="DELETE" 
                        onclick="return confirm('Are you sure you want to delete this coil?')">
@@ -33,9 +34,18 @@
             <a href="{{ url_for('views.job_order') }}">
                 <input class="back" type="button" name="choose" value="CANCEL">
             </a>
-            <form method="POST" action="{{ url_for('views.issue_coil', coil_tag=coil_tag[1]) }}">
-                <input onclick="return confirm('Are you sure you want to issue this coil?')" class="issue" type="submit" value="ISSUE">
-            </form>
+            {% else %}
+                <form method="POST" action="{{ url_for('views.delete_coil', coil_tag=coil_tag[1]) }}">
+                    <input type="submit" class="del" value="DELETE" 
+                        onclick="return confirm('Are you sure you want to delete this coil?')">
+                </form>
+                <a href="{{ url_for('views.job_order') }}">
+                    <input class="back" type="button" name="choose" value="CANCEL">
+                </a>
+                <form method="POST" action="{{ url_for('views.issue_coil', coil_tag=coil_tag[1]) }}">
+                    <input onclick="return confirm('Are you sure you want to issue this coil?')" class="issue" type="submit" value="ISSUE">
+                </form>
+            {% endif %}
         </div>
     </div>
 </body>

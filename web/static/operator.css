@@ -1,3 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+}
+
 .header {
     position: absolute;
     top: 0;
@@ -6,6 +16,11 @@
     width: 100vw;
     height: 12vh;
     box-shadow: 0px 0px 10px 0px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-direction: row;
 }
 
 .header .logo {
@@ -14,10 +29,23 @@
     position: absolute;
     top: 0;
     left: 2%;
-    cursor: pointer;
-    background: url(noy.jpeg);
-    background-repeat: no-repeat;
+    background: url('noy.jpeg') no-repeat center;
     background-size: 200px 88px;
+    cursor: pointer;
+}
+
+.search-bar {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.search-bar::placeholder {
+    color: #888;
 }
 
 .content {
@@ -27,37 +55,40 @@
     top: 12%;
     left: 0;
     display: flex;
+    justify-content: space-around;
+    padding: 10px;
 }
 
-.content .to-do {
+.to-do, .in-progress, .done {
     width: 30%;
     height: 90%;
-    margin: auto;
+    overflow-y: auto;
     box-shadow: 0px 1px 3px 1px gray;
+    border-radius: 8px;
+    padding: 10px;
 }
 
-.content .in-progress {
-    width: 30%;
-    height: 90%;
-    margin: auto;
-    box-shadow: 0px 1px 3px 1px gray;
+.todo-header, .inprog-header, .done-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
 }
 
-.content .in-progress .inprog-items {
-    display: flex;
+.to-do .todo-header {
+    background-color: #FAA0A0;
 }
 
-.content .done {
-    width: 30%;
-    height: 90%;
-    margin: auto;
-    box-shadow: 0px 1px 3px 1px gray;
-}
-.content a {
-    width: 70%;
+.in-progress .inprog-header {
+    background-color: #A7C7E7;
 }
 
-.content input[type=button] {
+.done .done-header {
+    background-color: #C1E1C1;
+}
+
+.coilTag {
     width: 100%;
     background-color: white;
     color: black;
@@ -66,113 +97,89 @@
     cursor: pointer;
     transition: 0.7s;
     font-size: 18px;
-    font-family: 'Courier New', monospace;
     text-align: left;
     margin-top: 10px;
     box-shadow: 0px 1px 1px 0px gray;
 }
 
-.content a input[type=button]:hover {
-    text-align: left;
-    width: 100%;
+.coilTag:hover {
     background-color: #585858;
     color: white;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: 1.3s;
-    font-size: 18px;
-    font-family: 'Courier New', monospace;
 }
 
-.content .done .done-items {
-    display: flex;
-}
-
-.content input[type=submit] {
+input[type=submit] {
     width: auto;
     height: 30px;
-    background-color: #585858;
-    color: white;
-    border: none;
     padding: 6px 6px;
-    cursor: pointer;
-    transition: 0.7s;
     font-size: 14px;
-    font-family: 'Courier New', monospace;
+    border: none;
+    cursor: pointer;
+    color: white;
     margin-top: 25px;
     margin-left: 5px;
+    transition: background-color 0.3s;
+    border-radius: 5px;
 }
 
-.content input[type=submit]:hover {
-    width: auto;
+input[type=submit].green {
+    background-color: green;
+}
+
+input[type=submit].red {
+    background-color: red;
+}
+
+input[type=submit]:hover {
     background-color: white;
     color: black;
-    border: none;
-    padding: 6px 6px;
-    cursor: pointer;
-    transition: 0.7s;
-    font-size: 14px;
-    font-family: 'Courier New', monospace;
+    border: 1px solid gray;
 }
 
-.content .to-do .todo-items {
+.todo-items, .inprog-items, .done-items {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
 }
 
-.content p {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 12px 20px;
-    font-size: 18px;
-    font-family: 'Courier New', monospace;
-    text-align: center;
-    font-style: normal;
-    font-weight: bold;
+.todo-items form, .inprog-items form, .done-items form {
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
 }
 
-.content .to-do .todo-header {
-    width: 100%;
-    height: 12%;
-    background-color: #FAA0A0;
-    color: black;
-    border: none;
-    font-family: 'Courier New', monospace;
-    text-align: center;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    padding-top: auto;
-    padding-bottom: auto;
-}
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 10vh;
+        padding-bottom: 10px;
+    }
 
-.content .in-progress .inprog-header {
-    width: 100%;
-    height: 12%;
-    background-color: #A7C7E7;
-    color: black;
-    border: none;
-    font-family: 'Courier New', monospace;
-    text-align: center;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    padding-top: auto;
-    padding-bottom: auto;
-}
+    .header .logo {
+        width: 60%;
+        height: 100%;
+    }
 
-.content .done .done-header {
-    width: 100%;
-    height: 12%;
-    background-color: #C1E1C1;
-    color: black;
-    border: none;
-    font-family: 'Courier New', monospace;
-    text-align: center;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    padding-top: auto;
-    padding-bottom: auto;
+    .search-bar {
+        width: 80%; 
+        margin-top: 10px;
+        order: 1;
+    }
+
+    .content {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .to-do, .in-progress, .done {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .coilTag {
+        width: 100%;
+        font-size: 16px;
+    }
 }

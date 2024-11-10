@@ -15,18 +15,18 @@
         <div class="coil-details">
             <p><b>EDIT COIL DETAILS</b></p>
             <form action="{{ url_for('views.edit_coil', coil_tag=coil_tag[1]) }}" method="POST">
-                <input type="text" name="gauge" placeholder="GAUGE: {{ coil_tag[4] }}" required>
                 <input type="text" name="weight" placeholder="WEIGHT: {{ coil_tag[5] }}" required>
+                <input type="text" name="location" placeholder="LOCATION: {{ coil_tag[6] }}" required>
                 <input type="text" value="TAG: {{ coil_tag[1] }}" readonly>
                 <input type="text" value="SUPPLIER: {{ coil_tag[2] }}" readonly>
                 <input type="text" value="COLOR: {{ coil_tag[3] }}" readonly>
-                <input type="text" value="LOCATION: {{ coil_tag[6] }}" readonly>
+                <input type="text" value="GAUGE: {{ coil_tag[4] }}" readonly>
                 
                 <div class="choice">
                     <a href="{{ url_for('views.operator') }}">
                         <input class="back" type="button" name="choose" value="BACK">
                     </a>
-                    <input class="back" type="submit" name="choose" value="FINISH" onclick="return confirm('Are you sure about the new details of this coil?')">
+                    <input class="finish" type="submit" name="choose" value="FINISH" onclick="return confirm('Are you sure about the new details of this coil?')">
                 </div>
             </form>
         </div>

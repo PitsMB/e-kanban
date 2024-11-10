@@ -61,10 +61,15 @@ def issue_coil(coil_tag):
 
 @views.route('/operator/')
 def operator():
+    all_tags = get_coil_tag_from_db()
+    search = request.args.get(key='search', default="")
+    if search:
+        all_tags = search_coil_tag_job_order(search)
+        
     todo_tags = operator_todo_coil_tags()
     inprog_tags = operator_inprog_coil_tags()
     done_tags = operator_done_coil_tags()
-    return render_template('operator.html', todo_tags=todo_tags, inprog_tags=inprog_tags, done_tags=done_tags)
+    return render_template('operator.html', todo_tags=todo_tags, inprog_tags=inprog_tags, done_tags=done_tags, tags=all_tags)
 
 @views.route('/cancel-in-progress/<coil_tag>', methods=["POST"])
 def cancel_in_progress(coil_tag):
@@ -100,15 +105,17 @@ def finish_coil(coil_tag):
 @views.route('/edit-coil/<coil_tag>', methods=["GET", "POST"])
 def edit_coil(coil_tag):
     if request.method == "POST":
-        gauge = request.form.get('gauge')
+        location = request.form.get('location')
         weight = request.form.get('weight')
         tag = coil_tag
-        to_edit = gauge, weight
+        to_edit = location, weight
         edit(to_edit, tag) 
         return redirect(url_for('views.operator'))
     return render_template('operator.html')
 
 @views.route('/coil-done/<coil_tag>', methods=["POST"])
 def coil_done(coil_tag):
-    done(coil_tag)
+    details = get_coil_detail_per_tag(coil_tag)
+    weight = details[5]
+    done(coil_tag, weight)
     return redirect(url_for('views.operator'))

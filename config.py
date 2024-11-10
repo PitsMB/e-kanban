@@ -11,9 +11,8 @@ def connect_db():
 
 def insert_new_coil_to_db(coil_details):
     try:
-        tag = coil_details[1]  # Use coil_details[1] to get the coil tag
+        tag = coil_details[1]
         
-        # Check if the tag already exists in the database
         db = connect_db()
         cursor = db.cursor()
         cursor.execute("SELECT * FROM coil WHERE tag = %s", (tag,))
@@ -41,6 +40,7 @@ def get_coil_tag_from_db():
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM coil;")
     tags = cursor.fetchall()
+
     cursor.close()
     db.close()
 
@@ -149,13 +149,18 @@ def operator_done_coil_tags():
 
     return tags
 
-def done(coil_tag):
+def done(coil_tag, weight):
+
     try:
         db = connect_db()
         cursor = db.cursor()
-
-        cursor.execute("UPDATE coil SET status = 'Used' WHERE tag = %s", (coil_tag,))
+        status = "Used"  # Default status
         
+        if weight < 1:
+            status = "EOC"
+        
+        # Update the coil's status in the database
+        cursor.execute("UPDATE coil SET status = %s WHERE tag = %s", (status, coil_tag))
         db.commit()
         cursor.close()
         db.close()
@@ -235,10 +240,10 @@ def edit(to_edit, coil_tag):
         cursor = db.cursor()
         query = """
             UPDATE coil 
-            SET gauge = %s, weight = %s, status = 'Done' 
+            SET location = %s, weight = %s, status = 'Done' 
             WHERE tag = %s
         """
-        cursor.execute(query, (*to_edit, coil_tag))  # Executes the query with the values
+        cursor.execute(query, (*to_edit, coil_tag)) 
         db.commit()
         
     except mysql.connector.Error as err:

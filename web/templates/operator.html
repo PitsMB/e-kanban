@@ -12,27 +12,23 @@
     </div>
     <div class="content">
         <div class="to-do">
-            <div class="todo-header">
-                To do
-            </div>
+            <div class="todo-header">To do</div>
             {% for tag in todo_tags %}
                 <div class="todo-items">
-                <a href="{{ url_for('views.coil_details', coil_tag = tag[1]) }}">
-                    <input type="button" name="coil-details-operator" class="coilTag" value="{{ tag[1] }}">
-                </a>
-                <form action="{{ url_for('views.start_process', coil_tag = tag[1]) }}" method="POST">
-                    <input onclick="return confirm('Are you sure you want to start this coil?')" style="background-color: green;" type="submit" value="Start">
-                </form>
+                    <a href="{{ url_for('views.coil_details', coil_tag = tag[1]) }}">
+                        <input type="button" name="coil-details-operator" class="coilTag" value="{{ tag[1] }}">
+                    </a>
+                    <form action="{{ url_for('views.start_process', coil_tag = tag[1]) }}" method="POST">
+                        <input onclick="return confirm('Are you sure you want to start this coil?')" style="background-color: green;" type="submit" value="Start">
+                    </form>
                 </div>
             {%endfor%}
         </div>
         <div class="in-progress">
-            <div class="inprog-header">
-                In progress
-            </div>
+            <div class="inprog-header">In progress</div>
             {% for tag in inprog_tags %}
                 <div class="inprog-items">
-                    <a href="{{ url_for('views.coil_details',  coil_tag = tag[1]) }}">
+                    <a href="{{ url_for('views.coil_details', coil_tag = tag[1]) }}">
                         <input type="button" name="scoil-details-operator" class="coilTag" value="{{ tag[1] }}">
                     </a>
                     <form action="{{ url_for('views.cancel_in_progress', coil_tag = tag[1]) }}" method="POST">
@@ -45,18 +41,13 @@
             {%endfor%}
         </div>
         <div class="done">
-            <div class="done-header">
-                Done
-            </div>
+            <div class="done-header">Done</div>
             {% for tag in done_tags %}
                 <div class="done-items">
                     <a href="{{ url_for('views.coil_details', coil_tag = tag[1]) }}">
                         <input type="button" name="coil-details-operator" class="coilTag" value="{{ tag[1] }}">
                     </a>
-                    <form action="{{ url_for('views.cancel_done', coil_tag = tag[1]) }}" method="POST">
-                        <input onclick="return confirm('Are you sure you are sure you want to cancel the progress of this coil?')" style="background-color: red;" type="submit" value="Cancel">
-                    </form>
-                    <form action="{{ url_for('views.coil_done', coil_tag = tag[1]) }}" method="POST">
+                    <form action="{{ url_for('views.coil_done', coil_tag = tag[1], weight = tag[5]) }}" method="POST">
                         <input onclick="return confirm('Are you sure you are finished with this coil?')" style="background-color: green;" type="submit"  value="Confirm">
                     </form>
                 </div>
