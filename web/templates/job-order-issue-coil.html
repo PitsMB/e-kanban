@@ -34,6 +34,10 @@
             <a href="{{ url_for('views.job_order') }}">
                 <input class="back" type="button" name="choose" value="CANCEL">
             </a>
+            {% elif coil_tag[7] == "To do" or coil_tag[7] == "In progress" or coil_tag[7] == "Done" %}
+                <a href="{{ url_for('views.job_order') }}">
+                    <input class="back" type="button" name="choose" value="CANCEL">
+                </a>
             {% else %}
                 <form method="POST" action="{{ url_for('views.delete_coil', coil_tag=coil_tag[1]) }}">
                     <input type="submit" class="del" value="DELETE" 

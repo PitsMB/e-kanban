@@ -40,10 +40,12 @@
                 <i class="header-status"><b>Status</b></i>
                 {% for tag in tags %}
                 {% if tag[7] == "In progress" or tag[7] == "To do" or tag[7] == "Done" %}
-                    <input title="Tag Already Issued and is now {{tag[7]}}" type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}"  readonly>
+                <a href="{{ url_for('views.job_order_coil_issue', showCoilDetails=tag[1]) }}">
+                    <input title="Tag Already Issued and is now {{tag[7]}}" type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}" >
+                </a>
                 {% elif tag[7] == "EOC" %}
                 <a href="{{ url_for('views.job_order_coil_issue', showCoilDetails=tag[1]) }}">
-                    <input style="text-decoration: line-through;" title="End of Coil" type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}" >
+                    <input style="text-decoration: line-through;" title="End of Coil (Delete Data)?" type="button" name="showCoilDetails" class="coilTag" value="{{ tag[1] }}" >
                 </a>
                 {% else %}
                 <a href="{{ url_for('views.job_order_coil_issue', showCoilDetails=tag[1]) }}">
