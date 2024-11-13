@@ -15,24 +15,37 @@ def insert_new_coil_to_db(coil_details):
         
         db = connect_db()
         cursor = db.cursor()
+        
         cursor.execute("SELECT * FROM coil WHERE tag = %s", (tag,))
         existing_coil = cursor.fetchone()
         
-        if existing_coil: 
-            return f"Coil Tag {tag} already exists"
+        if existing_coil:
+            cursor.close()
+            db.close()
+            return f"Coil Tag {tag} already exists. No new entry added."
+
+        coil_details += ('New',)
         
-        coil_details += ('New',) 
         query = """
         INSERT INTO coil (tag, supplier, color, gauge, weight, location, status)
         VALUES (%s, %s, %s, %s, %s, %s, %s)
         """
-        cursor.execute(query, coil_details)
-        db.commit()
+        
+        try:
+            cursor.execute(query, coil_details)
+            db.commit()
+            return f"Coil Tag {tag} added successfully."
+        except mysql.connector.IntegrityError as err:
+            if err.errno == 1062:
+                return f"Duplicate entry for Coil Tag {tag}"
+            else:
+                return f"An error occurred during insertion: {err}"
+        
         cursor.close()
         db.close()
 
     except mysql.connector.Error as err:
-        return f"An error occurred while inserting the coil data: {err}"
+        return f"Database error: {err}"
 
 
 def get_coil_tag_from_db():
@@ -156,7 +169,7 @@ def done(coil_tag, weight):
         cursor = db.cursor()
         status = "Used"  # Default status
         
-        if weight < 1:
+        if weight  == 0:
             status = "EOC"
         
         # Update the coil's status in the database
